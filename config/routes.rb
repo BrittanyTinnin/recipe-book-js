@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :quantities
   resources :ingredients
+  resources :recipes
 
   resources :users do
     resources :recipes
