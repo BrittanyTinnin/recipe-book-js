@@ -11,10 +11,10 @@
 
   <body>
     <% if logged_in? %>
-      <%= link_to "Logout", logout_path %>
+      <%= link_to "Logout", logout_path %><br>
     <% else %>
       <%= link_to "Signup", signup_path %>
-      <%= link_to "Login", login_path %>
+      <%= link_to "Login", login_path %><br>
     <% end %>
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
