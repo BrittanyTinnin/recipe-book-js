@@ -10,10 +10,15 @@
   </head>
 
   <body>
-
+    <% if logged_in? %>
+      <%= link_to "Logout", logout_path %>
+    <% else %>
+      <%= link_to "Signup", signup_path %>
+      <%= link_to "Login", login_path %>
+    <% end %>
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
-    <% end %>>
+    <% end %>
     <%= yield %>
   </body>
 </html>
