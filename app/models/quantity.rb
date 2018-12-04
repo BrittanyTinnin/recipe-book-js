@@ -1,2 +1,0 @@
-class Quantity < ApplicationRecord
-end
