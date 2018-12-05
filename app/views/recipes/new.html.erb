@@ -1,1 +1,20 @@
 app/views/recipes/new
+<h2>Create a Recipe</h2>
+
+<%= form_for @recipe do |f| %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label "Description" %>
+  <%= f.text_area :description %><br>
+
+  <% f.fields_for :ingredient do |i| %>
+    <%= i.label "Ingredients" %>
+    <%= i.text_field :name %><br>
+  <% end %>
+
+  <%= f.label "Instructions" %>
+  <%= f.text_area :instructions %><br>
+
+  <%= f.submit %>
+<% end %>

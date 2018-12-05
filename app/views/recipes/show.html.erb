@@ -1,1 +1,13 @@
 app/views/recipes/show
+
+<%= @recipe.name %>
+<%= @recipe.description %>
+<%= @recipe.ingredients.each do |i| %>
+  <%= i.name %>
+  <% i.quantities.each do |q| %>
+    <%= q.amount %>
+  <% end %>
+<% end %>
+<%= @recipe.instructions %>
+
+<!-- write code so that, if made this recipe you can edit it otherwise you can only view it -->
