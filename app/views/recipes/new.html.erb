@@ -8,10 +8,13 @@ app/views/recipes/new
   <%= f.label "Description" %>
   <%= f.text_area :description %><br>
 
-  <%= f.label "Ingredients" %>
-  <% f.fields_for :ingredient do |i| %>
-    <%= i.label :name %>
-    <%= i.text_field :name %><br>
+  <%= f.label "Quantity" %>
+  <% f.fields_for :quantities do |q| %>
+    <%= q.label :amount %>
+    <%= q.text_field :amount %><br>
+      <% q.fields_for :ingredient do |i| %>
+        <%= i.text_field :name %>
+      <% end %>
   <% end %>
 
   <%= f.label "Instructions" %>

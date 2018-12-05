@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_action :require_login
+  skip_before_action :require_login, only: [:index]
 
   def index
     @recipes = Recipe.all
@@ -6,12 +8,16 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    3.times {@recipe.ingredients.build}
+    3.times do
+      quantity = @recipe.quantities.build
+      quantity.build_ingredient
+    end
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
-    raise params.inspect #params doesn't include ingredients
+    binding.pry
+    # raise params.inspect #params doesn't include ingredients
     
     if @recipe.save!
       redirect_to user_recipe(current_user.id)
@@ -32,6 +38,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :instructions, ingredients_attributes: [:name])
+    params.require(:recipe).permit(:name, :description, :instructions, quantities_attributes: [:amount, ingredient_attributes: [:amount]])
   end
 end
