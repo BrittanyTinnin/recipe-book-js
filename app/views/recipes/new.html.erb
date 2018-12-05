@@ -6,14 +6,15 @@ app/views/recipes/new
   <%= f.text_field :name %><br>
 
   <%= f.label "Description" %>
-  <%= f.text_area :description %><br>
+  <%= f.text_area :description %><br><br>
 
-  <%= f.label "Quantity" %>
-  <% f.fields_for :quantities do |q| %>
+  <%= f.label "Ingredients" %><br>
+  <%= f.fields_for :quantities do |q| %>
     <%= q.label :amount %>
-    <%= q.text_field :amount %><br>
-      <% q.fields_for :ingredient do |i| %>
-        <%= i.text_field :name %>
+    <%= q.text_field :amount %>
+      <%= q.fields_for :ingredient do |i| %>
+        <%= i.label :name %>
+        <%= i.text_field :name %><br>
       <% end %>
   <% end %>
 

@@ -8,17 +8,14 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    3.times do
+    3.times {
       quantity = @recipe.quantities.build
       quantity.build_ingredient
-    end
+    }
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
-    binding.pry
-    # raise params.inspect #params doesn't include ingredients
-    
     if @recipe.save!
       redirect_to user_recipe(current_user.id)
     else 
