@@ -8,8 +8,9 @@ app/views/recipes/new
   <%= f.label "Description" %>
   <%= f.text_area :description %><br>
 
+  <%= f.label "Ingredients" %>
   <% f.fields_for :ingredient do |i| %>
-    <%= i.label "Ingredients" %>
+    <%= i.label :name %>
     <%= i.text_field :name %><br>
   <% end %>
 

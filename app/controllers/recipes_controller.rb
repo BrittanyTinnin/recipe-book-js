@@ -11,7 +11,8 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    raise params.inspect
+    raise params.inspect #params doesn't include ingredients
+    
     if @recipe.save!
       redirect_to user_recipe(current_user.id)
     else 
