@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:index]
+  before_action :set_recipe, only: [:show]
 
   def index
     @recipes = Recipe.all
@@ -15,12 +16,15 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save!
-      redirect_to user_recipe(current_user.id)
+      redirect_to user_recipe_path(current_user.id, @recipe)
     else 
       render :new
     end
+  end
+
+  def show
   end
 
   def edit
@@ -34,7 +38,11 @@ class RecipesController < ApplicationController
 
   private
 
+  def set_recipe
+    @recipe = Recipe.find_by(id: params[:id])
+  end
+
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :instructions, quantities_attributes: [:amount, ingredient_attributes: [:amount]])
+    params.require(:recipe).permit(:user_id, :name, :description, :instructions, quantities_attributes: [:amount, ingredient_attributes: [:amount]])
   end
 end
