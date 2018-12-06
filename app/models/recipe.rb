@@ -11,9 +11,8 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :quantities, reject_if: :all_blank
 
   def quantities_attributes=(quantities_attributes)
-    # self.quantities.destroy_all
+    self.quantities.destroy_all
     quantities_attributes.values.each do |quantity_attributes|
-      binding.pry
       self.quantities.build(quantity_attributes)
     end
   end

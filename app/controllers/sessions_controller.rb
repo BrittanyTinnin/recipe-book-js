@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
   def create
     if auth_hash = request.env["omniauth.auth"]
       @user = User.find_or_create_by_omniauth(auth_hash)
-      binding.pry
       session[:user_id] = @user.id
       flash[:notice] = "You're logged in."
       redirect_to recipes_path

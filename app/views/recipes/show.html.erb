@@ -1,7 +1,16 @@
 
+<% binding.pry %>
 Name: <%= @recipe.name %><br>
 Description: <%= @recipe.description %><br>
-<p>Ingredients: <% @recipe.quantities.each do |q| %> </p>
-         <p><%= q.amount %> <%= q.ingredient.name %></p>
+<p>Ingredients: <% @recipe.quantities.each do |q| %></p>
+  <p><%= q.amount %> <%= q.ingredient.name %></p>
 <% end %> 
 Instructions: <%= @recipe.instructions %>
+
+
+<% if current_user == @recipe.user %>
+  <%= link_to "Edit", edit_recipe_path(@recipe) %>
+  <%= form_tag recipe_path(@recipe), method: "delete" do %>
+    <%= submit_tag "Delete" %>
+  <% end %>
+<% end %>

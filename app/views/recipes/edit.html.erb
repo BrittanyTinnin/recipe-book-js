@@ -1,1 +1,23 @@
-app/views/recipes/edit
+<%= form_for [@user, @recipe] do |f| %>
+
+  <%= f.label "Name" %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label "Description" %>
+  <%= f.text_area :description %><br><br>
+
+  <%= f.label "Ingredients" %><br>
+  <%= f.fields_for :quantities do |q| %>
+    <%= q.label :amount %>
+    <%= q.text_field :amount %>
+      <%= q.fields_for :ingredient do |i| %>
+        <%= i.label :name %>
+        <%= i.text_field :name %><br>
+      <% end %>
+  <% end %>
+
+  <%= f.label "Instructions" %>
+  <%= f.text_area :instructions %><br>
+
+  <%= f.submit %>
+<% end %>
