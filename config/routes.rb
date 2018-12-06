@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/auth/facebook/callback' => 'sessions#create'
 
+  get '/recipes/order_by_name', to: 'recipes#name'
 
 
   resources :quantities

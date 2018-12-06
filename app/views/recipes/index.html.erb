@@ -1,6 +1,4 @@
-app/views/recipes/index
-<ul>
-  <% @recipes.each do |r| %>
-    <li><%= link_to r.name, recipe_path(r) %></li>
-  <% end %>
-</ul>
+
+<%= link_to "Sort by Name", recipes_order_by_name_path %> 
+
+<%= render 'displayall' %>
