@@ -12,7 +12,8 @@ class Recipe < ApplicationRecord
 
   def quantities_attributes=(quantities_attributes)
     # self.quantities.destroy_all
-    quantities_attributes.values.each do |i, quantity_attributes|
+    quantities_attributes.values.each do |quantity_attributes|
+      binding.pry
       self.quantities.build(quantity_attributes)
     end
   end

@@ -5,13 +5,14 @@ class SessionsController < ApplicationController
   def create
     if auth_hash = request.env["omniauth.auth"]
       @user = User.find_or_create_by_omniauth(auth_hash)
+      binding.pry
       session[:user_id] = @user.id
       flash[:notice] = "You're logged in."
       redirect_to recipes_path
     else
       @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password])
-        session[:user_id] = params[:email] = @user.id
+        session[:user_id] = current_user = @user.id
         flash[:notice] = "You're logged in."
         redirect_to recipes_path
       else 

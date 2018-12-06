@@ -1,9 +1,7 @@
-app/views/recipes/show
-
 
 Name: <%= @recipe.name %><br>
 Description: <%= @recipe.description %><br>
 <p>Ingredients: <% @recipe.quantities.each do |q| %> </p>
-         <p><%= q.amount %> x <%= q.ingredient.name %> </p>
+         <p><%= q.amount %> <%= q.ingredient.name %></p>
 <% end %> 
 Instructions: <%= @recipe.instructions %>
