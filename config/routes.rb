@@ -15,10 +15,10 @@ Rails.application.routes.draw do
 
   resources :quantities
   resources :ingredients
-  resources :recipes
+  resources :recipes, only: [:index]
 
-  resources :users do
-    resources :recipes
+  resources :users, only: [:new, :create] do
+    resources :recipes, only: [:new, :create, :show, :edit, :edit, :update ]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
