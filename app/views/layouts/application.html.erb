@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>RecipeBook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,7 +19,8 @@
     <% if logged_in? %>
       <%= link_to "Logout", logout_path %>
       <%= link_to "All Recipes", recipes_path %>
-      <%= link_to "New Recipe", new_user_recipe_path(current_user.id) %><br>
+      <%= link_to "New Recipe", new_user_recipe_path(current_user.id) %>
+      <%= link_to "My Recipes", user_recipes_path(current_user.id) %><br>
     <% else %>
       <%= link_to "Signup", signup_path %>
       <%= link_to "Login", login_path %><br>

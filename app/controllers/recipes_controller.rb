@@ -1,15 +1,20 @@
 class RecipesController < ApplicationController
   before_action :require_login
-  skip_before_action :require_login, only: [:index]
+  # skip_before_action :require_login, only: [:index]
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = Recipe.all
+    if params[:user_id]
+      @user = current_user
+      @recipes = @user.recipes
+    else
+      @recipes = Recipe.all
+    end
   end
 
   def new
     @recipe = Recipe.new
-    3.times {
+    4.times {
       quantity = @recipe.quantities.build
       quantity.build_ingredient
     }
@@ -17,7 +22,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = current_user.recipes.new(recipe_params)
-    if @recipe.save!
+    if @recipe.save
       redirect_to user_recipe_path(current_user.id, @recipe)
     else 
       render :new
@@ -46,6 +51,11 @@ class RecipesController < ApplicationController
 
   def name
     @recipes = Recipe.order_by_name
+  end
+
+  def myname
+    @user = current_user
+    @recipes = @user.recipes.order_by_name
   end
 
   private
