@@ -1,2 +1,0 @@
-class QuantitiesController < ApplicationController
-end
