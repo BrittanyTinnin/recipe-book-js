@@ -11,7 +11,9 @@
 
   <body>
     <% if logged_in? %>
-      <%= link_to "Logout", logout_path %><br>
+      <%= link_to "Logout", logout_path %>
+      <%= link_to "All Recipes", recipes_path %>
+      <%= link_to "New Recipe", new_user_recipe_path(current_user.id) %><br>
     <% else %>
       <%= link_to "Signup", signup_path %>
       <%= link_to "Login", login_path %><br>

@@ -1,15 +1,15 @@
 
-<% binding.pry %>
 Name: <%= @recipe.name %><br>
 Description: <%= @recipe.description %><br>
 <p>Ingredients: <% @recipe.quantities.each do |q| %></p>
   <p><%= q.amount %> <%= q.ingredient.name %></p>
 <% end %> 
-Instructions: <%= @recipe.instructions %>
+Instructions: <%= @recipe.instructions %><br>
 
 
+<%= link_to "Back", recipes_path %>
 <% if current_user == @recipe.user %>
-  <%= link_to "Edit", edit_recipe_path(@recipe) %>
+  <%= link_to "Edit", edit_user_recipe_path(current_user, @recipe) %>
   <%= form_tag recipe_path(@recipe), method: "delete" do %>
     <%= submit_tag "Delete" %>
   <% end %>

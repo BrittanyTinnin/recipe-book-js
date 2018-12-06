@@ -1,2 +1,6 @@
 app/views/recipes/index
-<%= link_to "New Recipe", new_user_recipe_path(current_user.id) %>
+<ul>
+  <% @recipes.each do |r| %>
+    <li><%= link_to r.name, recipe_path(r) %></li>
+  <% end %>
+</ul>

@@ -7,8 +7,10 @@ class Recipe < ApplicationRecord
   validates :description, presence: true
   validates :instructions, presence: true
 
+  scope :order_by_name, -> {order(name: :asc)}
 
-  accepts_nested_attributes_for :quantities, reject_if: :all_blank
+
+  accepts_nested_attributes_for :quantities
 
   def quantities_attributes=(quantities_attributes)
     self.quantities.destroy_all

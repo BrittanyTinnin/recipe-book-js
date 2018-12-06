@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:index]
-  before_action :set_recipe, only: [:show, :edit]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
     @recipes = Recipe.all
@@ -32,16 +32,16 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @user = current_user
-    @recipe = @user.recipes
     if @recipe.update(recipe_params)
-      redirect_to user_recipe_path(current_user.id, @recipe)
+      redirect_to recipe_path(@recipe)
     else
       render :edit
     end
   end
 
   def destroy
+    @recipe.delete
+    redirect_to recipes_path
   end
 
   private
