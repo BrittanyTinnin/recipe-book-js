@@ -1,7 +1,7 @@
 <%= render 'recipes/errors' %>
 
 <div class="container">
-  <%= form_for [@user, @recipe] do |f| %>
+  <%= form_for [user, recipe] do |f| %>
     <div class="form-group">
       <%= f.label "Name", class: "font-weight-bold" %>
       <%= f.text_field :name, class: 'form-control' %>

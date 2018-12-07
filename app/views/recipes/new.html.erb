@@ -1,5 +1,5 @@
 <h2>Create a 4 Recipe Meal</h2>
 
-<%= render 'form'%>
+<%= render partial: 'form', locals: {user: @user, recipe: @recipe} %>
 
 <%= link_to "Back", recipes_path, class: 'btn btn-secondary' %>
