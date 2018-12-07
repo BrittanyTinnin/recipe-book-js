@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
     <title>RecipeBook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -15,30 +10,24 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
     
-        <% if logged_in? %>
-          <%= link_to "Logout", logout_path %>
-          <%= link_to "All Recipes", recipes_path %>
-          <%= link_to "New Recipe", new_user_recipe_path(current_user.id) %>
-          <%= link_to "My Recipes", user_recipes_path(current_user.id) %><br>
-        <% else %>
-          <%= link_to "Signup", signup_path %>
-          <%= link_to "Login", login_path %><br>
-        <% end %>
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, class: name %>
-        <% end %>
-      </div>
-    </nav>
-    <%= yield %>
+    <% if logged_in? %>
+      <%= link_to "Logout", logout_path %>
+      <%= link_to "All Recipes", recipes_path %>
+      <%= link_to "New Recipe", new_user_recipe_path(current_user.id) %>
+      <%= link_to "My Recipes", user_recipes_path(current_user.id) %><br>
+    <% else %>
+      <%= link_to "Signup", signup_path %>
+      <%= link_to "Login", login_path %><br>
+    <% end %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
+  
+    <div class="container">
+      <%= yield %>
+    </div>
+
   </body>
 </html>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand" href="#">Navbar</a>
-  </div>
-</nav>
