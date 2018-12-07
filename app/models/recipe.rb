@@ -19,6 +19,4 @@ class Recipe < ApplicationRecord
     end
   end
 
-  #checking method
-
 end
