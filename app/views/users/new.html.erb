@@ -1,5 +1,18 @@
 <h2>Create an Account!</h2>
 
+  <% if @user.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from saving:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    </div>
+  <% end %>
+
 <div class="container">
   <%= form_for @user do |f| %>
     <div class="form-group">
