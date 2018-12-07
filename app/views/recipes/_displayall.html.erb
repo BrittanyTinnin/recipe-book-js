@@ -1,6 +1,16 @@
 
-<ul>
-  <% @recipes.each do |r| %>
-    <li><%= link_to r.name, recipe_path(r) %></li>
-  <% end %>
-</ul>
+
+<div class="container">
+  <div class="row">
+    <% @recipes.each do |r| %>
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= r.name %></h5>
+          <%= link_to "Show", recipe_path(r), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+ </div>
+</div>
