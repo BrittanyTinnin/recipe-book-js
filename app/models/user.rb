@@ -13,4 +13,5 @@ class User < ApplicationRecord
     end
   end
   
+  #check user model
 end
