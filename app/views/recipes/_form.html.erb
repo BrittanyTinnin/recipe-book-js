@@ -1,4 +1,4 @@
-<%= render 'recipes/errors' %>
+<%= render partial: 'recipes/errors', locals: {recipe: @recipe} %>
 
 <div class="container">
   <%= form_for [user, recipe] do |f| %>
