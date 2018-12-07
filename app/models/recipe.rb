@@ -7,7 +7,7 @@ class Recipe < ApplicationRecord
   validates :description, presence: true
   validates :instructions, presence: true
 
-  scope :order_by_name, -> {order(name: :asc)}
+  scope :order_by_name, -> {order('lower(name) ASC')}
 
 
   accepts_nested_attributes_for :quantities
