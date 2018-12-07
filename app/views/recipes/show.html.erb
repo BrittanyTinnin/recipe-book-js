@@ -7,10 +7,10 @@ Description: <%= @recipe.description %><br>
 Instructions: <%= @recipe.instructions %><br>
 
 
-<%= link_to "Back", recipes_path %>
+<%= link_to "Back", recipes_path, class: 'btn btn-secondary' %>
 <% if current_user == @recipe.user %>
-  <%= link_to "Edit", edit_user_recipe_path(current_user, @recipe) %>
+  <%= link_to "Edit", edit_user_recipe_path(current_user, @recipe), class: 'btn btn-secondary' %>
   <%= form_tag recipe_path(@recipe), method: "delete", data: { confirm: "Really?" } do %>
-    <%= submit_tag "Delete" %>
+    <%= submit_tag "Delete", class: 'btn btn-danger' %>
   <% end %>
 <% end %>

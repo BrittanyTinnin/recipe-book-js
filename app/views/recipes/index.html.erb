@@ -1,6 +1,2 @@
-<% if params[:user_id] %>
-  <%= link_to "Sort by Name", ordered_path(current_user.id) %> 
-<% else %>
-  <%= link_to "Sort by Name", recipes_order_by_name_path %> 
-<% end %>
+<%= render 'nameorder' %>
 <%= render 'displayall' %>

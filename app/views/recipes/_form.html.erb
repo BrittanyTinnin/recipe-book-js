@@ -1,34 +1,36 @@
-<% if @recipe.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from saving:</h2>
-    <ul>
-      <% @recipe.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<%= render 'recipes/errors' %>
+
+<div class="container">
+  <%= form_for [@user, @recipe] do |f| %>
+    <div class="form-group">
+      <%= f.label "Name", class: "font-weight-bold" %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "Description", class: "font-weight-bold" %>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+
+    <%= f.label "Ingredients", class: "font-weight-bold" %>
+    <div class="form">
+      <%= f.fields_for :quantities do |q| %>
+        <%= q.label :amount, class: "font-weight-normal" %>
+        <%= q.text_field :amount, class: 'form-control' %>
+        <%= q.fields_for :ingredient do |i| %>
+          <%= i.label :name, class: "font-weight-normal" %>
+          <%= i.text_field :name, class: 'form-control' %>
+        <% end %>
       <% end %>
-    </ul>
-  </div>
-<% end %>
+    </div>
 
-<%= form_for [@user, @recipe] do |f| %>
+    <div class="form-group">
+      <%= f.label "Instructions", class: "font-weight-bold" %>
+      <%= f.text_area :instructions, class: 'form-control' %>
+    </div>
 
-  <%= f.label "Name" %>
-  <%= f.text_field :name %><br>
-
-  <%= f.label "Description" %>
-  <%= f.text_area :description %><br><br>
-
-  <%= f.label "Ingredients" %><br>
-  <%= f.fields_for :quantities do |q| %>
-    <%= q.label :amount %>
-    <%= q.text_field :amount %>
-      <%= q.fields_for :ingredient do |i| %>
-        <%= i.label :name %>
-        <%= i.text_field :name %><br>
-      <% end %>
+    <div class="form-group">
+      <%= f.submit "Create", class: 'btn btn-primary' %>
+    </div>
   <% end %>
-
-  <%= f.label "Instructions" %>
-  <%= f.text_area :instructions %><br>
-
-  <%= f.submit %>
-<% end %>
+</div>

@@ -1,27 +1,24 @@
-<h1>Recipe Book - Create An Account Here!</h1><br>
- <% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from signing up:</h3>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'recipes/errors' %>
 
-<%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %><br>
-
-  <%= f.submit "Sign Up" %>
-<% end %>
+<div class="container">
+  <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :username, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+    <%= f.submit "Sign Up", class: 'btn btn-primary' %><br>
+  <% end %>
+</div>
