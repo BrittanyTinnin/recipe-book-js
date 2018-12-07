@@ -2,4 +2,5 @@
   <%= link_to "Sort by Name", ordered_path(current_user.id) %> 
 <% else %>
   <%= link_to "Sort by Name", recipes_order_by_name_path %> 
+  <%= link_to "Sort by Instructions", index_instruction_path %>
 <% end %>
