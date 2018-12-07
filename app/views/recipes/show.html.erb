@@ -1,10 +1,10 @@
 
-Name: <%= @recipe.name %><br>
-Description: <%= @recipe.description %><br>
-<p>Ingredients: <% @recipe.quantities.each do |q| %></p>
-  <p><%= q.amount %> <%= q.ingredient.name %></p>
-<% end %> 
-Instructions: <%= @recipe.instructions %><br>
+<h3>Name: <%= @recipe.name %><br></h3>
+<h4>Description: <%= @recipe.description %><br></h4>
+  <h5><p>Ingredients:</h5> <% @recipe.quantities.each do |q| %></p>
+    <p><%= q.amount %> <%= q.ingredient.name %></p>
+  <% end %>
+<h5>Instructions:</h5> <%= @recipe.instructions %><br>
 
 
 <%= link_to "Back", recipes_path, class: 'btn btn-secondary' %>
