@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get '/recipes/order_by_name', to: 'recipes#name'
   get '/users/:id/recipes/order_by_name', to: 'recipes#myname', as: 'ordered'
-
+  get '/recipes/recently_updated', to: 'recipes#updated'
 
   resources :quantities
   resources :ingredients
