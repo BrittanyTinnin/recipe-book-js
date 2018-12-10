@@ -58,10 +58,6 @@ class RecipesController < ApplicationController
     @recipes = @user.recipes.order_by_name
   end
 
-  def updated
-    @recipes = Recipe.recently_updated
-  end
-
   private
 
   def set_recipe

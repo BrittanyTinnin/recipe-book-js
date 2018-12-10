@@ -12,10 +12,6 @@ class Recipe < ApplicationRecord
     order('lower(name) ASC')
   end
 
-  def self.recently_updated
-    order('updated_at desc')
-  end
-
   accepts_nested_attributes_for :quantities
 
   def quantities_attributes=(quantities_attributes)
