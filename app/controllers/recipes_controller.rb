@@ -30,6 +30,10 @@ class RecipesController < ApplicationController
   end
 
   def show
+    if !@recipe
+      flash[:notice] = "Recipe does not exist."
+      redirect_to recipes_path
+    end
   end
 
   def edit
@@ -38,7 +42,7 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
+      redirect_to user_recipe_path(current_user.id, @recipe)
     else
       render :edit
     end
