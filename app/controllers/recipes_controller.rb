@@ -38,6 +38,10 @@ class RecipesController < ApplicationController
 
   def edit
     @user = current_user
+    if !@recipe
+      flash[:notice] = "Recipe does not exist for this user."
+      redirect_to recipes_path
+    end
   end
 
   def update

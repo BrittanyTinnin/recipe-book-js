@@ -7,7 +7,7 @@
       <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title"><%= r.name %></h5>
-          <%= link_to "View", recipe_path(r), class: 'btn btn-primary' %>
+          <%= link_to "View", user_recipe_path(current_user.id, r), class: 'btn btn-primary' %>
         </div>
       </div>
     </div>
