@@ -12,20 +12,6 @@ class Recipe < ApplicationRecord
     order('lower(name) ASC')
   end
 
-  # accepts_nested_attributes_for :quantities
-
-  # def quantities_attributes=(quantities_attributes)
-  #   # raise quantities_attributes.inspect
-  #   self.quantities.destroy_all
-  #   quantities_attributes.values.each do |quantity_attributes|
-  #     if quantity_attributes[:ingredient_attributes][:name] != ""
-  #       ingredient = Ingredient.find_or_create_by(name: quantity_attributes[:ingredient_attributes][:name])
-  #       self.quantities.build(ingredient: ingredient, amount: quantity_attributes[:amount])
-  #       self.save
-  #     end
-  #   end
-  # end
-
   def quantities_attributes=(quantities_attributes)
     quantities_attributes.values.each do |quantity_attributes|
       unless quantity_attributes[:name].blank?
