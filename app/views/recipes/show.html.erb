@@ -2,7 +2,7 @@
 <h3>Name: <%= @recipe.name %><br></h3>
 <h4>Description: <%= @recipe.description %><br></h4>
   <h5><p>Ingredients:</h5> <% @recipe.quantities.each do |q| %></p>
-    <p><%= q.amount %> <%= q.ingredient.name %></p>
+    <p><%= q.amount %> <%= link_to q.ingredient.name, ingredient_path(q.ingredient) %></p>
   <% end %>
 <h5>Instructions:</h5> <%= @recipe.instructions %><br>
 

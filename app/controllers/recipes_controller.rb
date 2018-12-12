@@ -14,10 +14,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    # 4.times {
-    #   quantity = @recipe.quantities.build
-    #   quantity.build_ingredient
-    # }
     4.times{@recipe.quantities.build}
   end
 
