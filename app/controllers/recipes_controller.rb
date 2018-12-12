@@ -14,10 +14,11 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    4.times {
-      quantity = @recipe.quantities.build
-      quantity.build_ingredient
-    }
+    # 4.times {
+    #   quantity = @recipe.quantities.build
+    #   quantity.build_ingredient
+    # }
+    4.times{@recipe.quantities.build}
   end
 
   def create
@@ -42,9 +43,12 @@ class RecipesController < ApplicationController
       flash[:notice] = "Recipe does not exist for this user."
       redirect_to recipes_path
     end
+    add_quantity = 4 - @recipe.quantities.length
+    add_quantity.times {@recipe.quantities.build}
   end
 
   def update
+    @recipe.quantities.destroy_all
     if @recipe.update(recipe_params)
       redirect_to user_recipe_path(current_user.id, @recipe)
     else
@@ -78,8 +82,7 @@ class RecipesController < ApplicationController
       :name, 
       :description, 
       :instructions, 
-      quantities_attributes: [ :amount, 
-      ingredient_attributes: [ :name]]
+      quantities_attributes: [:name, :amount]
       )
   end
 end

@@ -17,10 +17,8 @@
       <%= f.fields_for :quantities do |q| %>
         <%= q.label :amount, class: "font-weight-normal" %>
         <%= q.text_field :amount, class: 'form-control' %>
-        <%= q.fields_for :ingredient do |i| %>
-          <%= i.label :name, class: "font-weight-normal" %>
-          <%= i.text_field :name, class: 'form-control' %>
-        <% end %>
+        <%= q.label :name, class: "font-weight-normal" %>
+        <%= q.text_field :name, class: 'form-control' %>
       <% end %>
     </div>
 
