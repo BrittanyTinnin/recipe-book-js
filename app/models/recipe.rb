@@ -13,6 +13,7 @@ class Recipe < ApplicationRecord
   end
 
   def quantities_attributes=(quantities_attributes)
+    binding.pry
     quantities_attributes.values.each do |quantity_attributes|
       unless quantity_attributes[:name].blank?
         quantity = Quantity.new(quantity_attributes)
