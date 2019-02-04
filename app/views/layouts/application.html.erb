@@ -10,8 +10,7 @@
   </head>
 
   <body>
-    <%# render 'shared/nav'%>
-    <a href="/recipes" id="all-recipes">All Recipes</a>
+    <% render 'shared/nav'%>
     <div class="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
