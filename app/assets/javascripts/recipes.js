@@ -2,5 +2,10 @@
 $(document).ready(function() {
   // list all event listener functions
   console.log('recipe.js is loaded....')
+  listenAllRecipesClick()
 });
+
+function listenAllRecipesClick() {
+  ()
+}
 
