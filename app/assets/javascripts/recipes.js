@@ -6,6 +6,16 @@ $(document).ready(function() {
 });
 
 function listenAllRecipesClick() {
-  ()
+  console.log('in listen all recipes click function')
+  let asdf = document.getElementById('all-recipes')
+  asdf.addEventListener('click', function(event){
+    event.preventDefault();
+    // console.log(event)
+    getRecipes();
+  })
+}
+
+function getRecipes() {
+  
 }
 
