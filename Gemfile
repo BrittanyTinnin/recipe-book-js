@@ -32,6 +32,7 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
+gem 'active_model_serializers'
 
 
 # Use ActiveStorage variant
