@@ -7,8 +7,16 @@ class RecipesController < ApplicationController
     if params[:user_id]
       @user = current_user
       @recipes = @user.recipes
+      respond_to do |format|
+        format.html {render :index}
+        format.json {render json: @recipes}
+      end
     else
       @recipes = Recipe.all
+      respond_to do |format|
+        format.html {render :index}
+        format.json {render json: @recipes}
+      end
     end
   end
 
@@ -30,6 +38,10 @@ class RecipesController < ApplicationController
     if !@recipe
       flash[:notice] = "Recipe does not exist."
       redirect_to recipes_path
+    end
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @recipe}
     end
   end
 
