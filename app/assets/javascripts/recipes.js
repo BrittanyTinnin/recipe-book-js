@@ -10,7 +10,7 @@ function listenAllRecipesClick() {
   let asdf = document.getElementById('all-recipes')
   asdf.addEventListener('click', function(event){
     event.preventDefault();
-    // console.log(event)
+    console.log(event)
     getRecipes();
   })
 }
