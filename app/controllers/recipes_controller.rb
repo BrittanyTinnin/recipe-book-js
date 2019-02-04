@@ -40,7 +40,7 @@ class RecipesController < ApplicationController
       redirect_to recipes_path
     end
     respond_to do |format|
-      format.html {render :index}
+      format.html {render :show}
       format.json {render json: @recipe}
     end
   end
