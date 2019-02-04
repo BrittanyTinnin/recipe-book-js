@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   end
 
   get 'ajaxland', to: 'recipes#ajaxland'
-  post 'ajaxland', to: 'recipes#ajaxland'
+  # post 'ajaxland', to: 'recipes#ajaxland'
 end
