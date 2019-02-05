@@ -3,12 +3,15 @@ class RecipesController < ApplicationController
   # skip_before_action :require_login, only: [:index]
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
+  def ajaxland
+  end
+
   def index
     if params[:user_id]
       @user = current_user
       @recipes = @user.recipes
       respond_to do |format|
-        format.html {render :paindex}
+        format.html {render :index}
         format.json {render json: @recipes}
       end
     else

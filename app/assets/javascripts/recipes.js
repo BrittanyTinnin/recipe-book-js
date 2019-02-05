@@ -2,17 +2,35 @@
 $(document).ready(function() {
   // list all event listener functions
   console.log('recipe.js is loaded....');
-  listenAllRecipesClick();
-  listenARecipeClick();
+  if(document.getElementById('ajax-content') ) {
+    listenAllRecipesClick();
+    listenMyRecipesClick();
+  }
 });
+
+class Recipe {
+  constructor(obj) {
+    this.id = obj.id
+    this.name = obj.name
+    this.description = obj.description
+    // this.user.id = obj.user.id
+    this.quantities = obj.quantities
+    this.ingredients = obj.ingredients
+  }
+}
+
+Recipe.prototype.buildHTML = function() {
+  let html = `<h2>${this.name}</h2>`
+  html += `<li>${this.description}</li>`
+  return html
+}
 
 
 function listenAllRecipesClick() {
   console.log('in listen all recipes click function');
-  let asdf = document.getElementById('all-recipes');
-  asdf.addEventListener('click', function(event){
+  let docId = document.getElementById('all-recipes');
+  docId.addEventListener('click', function(event){
     event.preventDefault();
-    console.log(event);
     getRecipes();
   });
 };
@@ -27,45 +45,54 @@ function getRecipes() {
     let recipes = myJson
     let recipeList = ""
     recipes.forEach((recipe) => {
-      recipeList += '<li>' + '<a href="#">' + recipe.name + '</a>' + '</li>';
+      recipeList += '<li>' + '<a class="recipe-name" href="#" data-id=' + recipe.id + '>' + recipe.name + '</a>' + '</li>';
     });
-    $('#recipe-list').html('<br>' + '<h3> All Recipes </h3>' + recipeList)
-    // console.log(recipes);
+    $('#ajax-content').html('<br>' + '<h3> All Recipes </h3>' + recipeList);
   });
+  listenRecipeNameClick();
 };
 
+function listenRecipeNameClick() {
+  console.log('inside recipe name click')
+  // let recipeName = document.getElementsByClassName('recipe-name');
+  // console.log(recipeName)
+  // recipeName.addEventListener('click', function(e){
+  //   e.preventDefault();
+  // })
+  $('.recipe-name').click(function(e){
+    e.preventDefault();
+    console.log(this)
+    showRecipe();
+  })
+}
 
-function listenARecipeClick() {
+function showRecipe() {
+  console.log('in show recipe function')
+
+}
+
+
+function listenMyRecipesClick() {
   console.log('in my recipes click function')
   let myRecipeEl = document.getElementById('my-recipes');
   myRecipeEl.addEventListener('click', function(e){
     e.preventDefault();
-    getARecipe();
+    const url = this.href
+    getMyRecipes(url);
   })
 }
 
-function getARecipe() {
-  fetch(`/recipes/${id}.json`)
+function getMyRecipes(url) {
+  fetch(url + '.json')
   .then(function(response){
     return response.json()
   })
   .then(function(myJson) {
-    console.log(myJson);
+    let myRecipes = myJson
+    let myRecipeList = ""
+    myRecipes.forEach((recipe) => {
+      myRecipeList += '<li>' + '<a href="#">' + recipe.name + '</a>' + '</li>';
+    })
+    $('#ajax-content').html('<br>' + '<h3> My Recipes </h3>' + myRecipeList);
   });
 }
-
-// function getRecipes() {
-//   fetch('/recipes.json')
-//   .then(function(response) {
-//     return response.json();
-//   })
-//   .then(function(myJson) {
-//     let recipes = myJson
-//     let recipeList = ""
-//     recipes.forEach((recipe) => {
-//       recipeList += '<li>' + '<a href="#">' + recipe.name + '</a>' + '</li>';
-//     });
-//     $('#recipe-list').html('<br>' + '<h3> All Recipes </h3>' + recipeList)
-//     // console.log(recipes);
-//   });
-// };
