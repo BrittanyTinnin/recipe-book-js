@@ -20,8 +20,11 @@ class Recipe {
 }
 
 Recipe.prototype.buildHTML = function() {
-  let html = `<h2>${this.name}</h2>`
+  let html = '<h2>Recipe</h2>' + `<h3>${this.name}</h3>`
   html += `<li>${this.description}</li>`
+  html += 
+  html += '<ul>' + `<li>${this.ingredients}</li>`
+
   return html
 }
 
@@ -45,32 +48,40 @@ function getRecipes() {
     let recipes = myJson
     let recipeList = ""
     recipes.forEach((recipe) => {
-      recipeList += '<li>' + '<a class="recipe-name" href="#" data-id=' + recipe.id + '>' + recipe.name + '</a>' + '</li>';
+      recipeList += '<li>' + '<a class="recipe-name" href="recipes/' + recipe.id + '">' + recipe.name + '</a>' + '</li>';
     });
     $('#ajax-content').html('<br>' + '<h3> All Recipes </h3>' + recipeList);
+    listenRecipeNameClick();
   });
-  listenRecipeNameClick();
 };
 
 function listenRecipeNameClick() {
   console.log('inside recipe name click')
   // let recipeName = document.getElementsByClassName('recipe-name');
-  // console.log(recipeName)
   // recipeName.addEventListener('click', function(e){
   //   e.preventDefault();
+  //   showRecipe();
   // })
-  $('.recipe-name').click(function(e){
+  $(".recipe-name").click(function(e){
     e.preventDefault();
-    console.log(this)
-    showRecipe();
+    const url = this.href
+    showRecipe(url);
   })
 }
 
-function showRecipe() {
+function showRecipe(url) {
   console.log('in show recipe function')
-
+  fetch(url + '.json')
+  .then(function(response){
+    return response.json()
+  })
+  .then(function(response){
+    let recipe = new Recipe(response)
+    console.log('recipe created')
+    console.log(recipe)
+    $("#ajax-content").html(recipe.buildHTML())
+  })
 }
-
 
 function listenMyRecipesClick() {
   console.log('in my recipes click function')
@@ -91,8 +102,9 @@ function getMyRecipes(url) {
     let myRecipes = myJson
     let myRecipeList = ""
     myRecipes.forEach((recipe) => {
-      myRecipeList += '<li>' + '<a href="#">' + recipe.name + '</a>' + '</li>';
+      myRecipeList += '<li>' + '<a class="recipe-name" href="recipes/' + recipe.id + '">' + recipe.name + '</a>' + '</li>';
     })
     $('#ajax-content').html('<br>' + '<h3> My Recipes </h3>' + myRecipeList);
+    listenRecipeNameClick();
   });
 }
