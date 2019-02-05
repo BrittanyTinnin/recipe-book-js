@@ -3,7 +3,7 @@ $(document).ready(function() {
   // list all event listener functions
   console.log('recipe.js is loaded....');
   listenAllRecipesClick();
-  listenMyRecipesClick();
+  listenARecipeClick();
 });
 
 
@@ -35,32 +35,37 @@ function getRecipes() {
 };
 
 
-function listenMyRecipesClick() {
+function listenARecipeClick() {
   console.log('in my recipes click function')
   let myRecipeEl = document.getElementById('my-recipes');
   myRecipeEl.addEventListener('click', function(e){
     e.preventDefault();
-    getMyRecipes();
+    getARecipe();
   })
 }
 
-function getMyRecipes() {
-  console.log('in getMyRecipes click function')
-  
-}
-
-function getRecipes() {
-  fetch('/recipes.json')
-  .then(function(response) {
-    return response.json();
+function getARecipe() {
+  fetch(`/recipes/${id}.json`)
+  .then(function(response){
+    return response.json()
   })
   .then(function(myJson) {
-    let recipes = myJson
-    let recipeList = ""
-    recipes.forEach((recipe) => {
-      recipeList += '<li>' + '<a href="#">' + recipe.name + '</a>' + '</li>';
-    });
-    $('#recipe-list').html('<br>' + '<h3> All Recipes </h3>' + recipeList)
-    // console.log(recipes);
+    console.log(myJson);
   });
-};
+}
+
+// function getRecipes() {
+//   fetch('/recipes.json')
+//   .then(function(response) {
+//     return response.json();
+//   })
+//   .then(function(myJson) {
+//     let recipes = myJson
+//     let recipeList = ""
+//     recipes.forEach((recipe) => {
+//       recipeList += '<li>' + '<a href="#">' + recipe.name + '</a>' + '</li>';
+//     });
+//     $('#recipe-list').html('<br>' + '<h3> All Recipes </h3>' + recipeList)
+//     // console.log(recipes);
+//   });
+// };

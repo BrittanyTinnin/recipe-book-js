@@ -22,6 +22,6 @@ Rails.application.routes.draw do
     resources :recipes, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   end
 
-  get 'ajaxland', to: 'recipes#ajaxland'
+  get 'ajaxland', to: 'recipes#ajaxland', as: 'jspage'
   # post 'ajaxland', to: 'recipes#ajaxland'
 end
