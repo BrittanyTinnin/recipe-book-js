@@ -132,6 +132,10 @@ function loadForm(url) {
 
 function listenSubmitForm() {
   console.log('in submit form')
-  
+  let submit = document.getElementById('submit-form')
+  submit.addEventListener('click', function(e){
+    e.preventDefault();
+    alert('clicked form submit button')
+  })
 }
 
