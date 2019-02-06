@@ -129,18 +129,3 @@ function getForm(url) {
  })
 }
 
-// function getMyRecipes(url) {
-//   fetch(url + '.json')
-//   .then(function(response){
-//     return response.json()
-//   })
-//   .then(function(myJson) {
-//     let myRecipes = myJson
-//     let myRecipeList = ""
-//     myRecipes.forEach((recipe) => {
-//       myRecipeList += '<li>' + '<a class="recipe-name" href="recipes/' + recipe.id + '">' + recipe.name + '</a>' + '</li>';
-//     })
-//     $('#ajax-content').html('<br>' + '<h3> My Recipes </h3>' + myRecipeList);
-//     listenRecipeNameClick();
-//   });
-// }
