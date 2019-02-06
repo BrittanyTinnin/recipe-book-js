@@ -123,7 +123,8 @@ function listenForRecipeFormClick() {
 
 function getForm(url) {
   console.log('inside getForm')
- $.get(url).done(resp => {
+  let param = "?layout=false"
+ $.get(url + param).done(resp => {
    $('#ajax-form-recipe').html(resp);
  })
 }

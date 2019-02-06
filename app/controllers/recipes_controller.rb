@@ -26,6 +26,11 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     4.times{@recipe.quantities.build}
+    if params[:layout] && params[:layout] == 'false'
+      render :new, layout: false
+    else
+      render :new
+    end
   end
 
   def create
