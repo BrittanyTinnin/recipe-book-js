@@ -112,21 +112,25 @@ function getMyRecipes(url) {
 
 function listenForRecipeFormClick() {
   console.log('in recipe form click function')
-  let newRecipeEl = document.getElementById('new-recipe')
-  newRecipeEl.addEventListener('click', function(e){
+  let newRecipeLink = document.getElementById("new-recipe")
+  newRecipeLink.addEventListener('click', function(e){
     e.preventDefault();
-    const formURL = this.href
-    getForm(formURL);
+    const url = this.href
+    console.log(url)
+    // getForm(url);
   })
 }
 
-function getForm(formURL) {
-  console.log('inside getForm')
-  fetch(formURL + '.json')
-  .then(function(res) {
-    return res.json();
-  })
-}
+// function getForm(url) {
+//   console.log('inside getForm')
+//   fetch(url + '.json')
+//   .then(function(res) {
+//     return res.json();
+//   })
+//   .then(function(myJson) {
+//     console.log(myJson)
+//   })
+// }
 
 // function getMyRecipes(url) {
 //   fetch(url + '.json')
