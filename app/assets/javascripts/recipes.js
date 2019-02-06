@@ -5,6 +5,7 @@ $(document).ready(function() {
   if(document.getElementById('ajax-content') ) {
     listenAllRecipesClick();
     listenMyRecipesClick();
+    listenForRecipeFormClick();
   }
 });
 
@@ -19,7 +20,7 @@ class Recipe {
   }
 
   static newRecipeForm() {
-    
+
   }
 }
 
@@ -107,4 +108,8 @@ function getMyRecipes(url) {
     $('#ajax-content').html('<br>' + '<h3> My Recipes </h3>' + myRecipeList);
     listenRecipeNameClick();
   });
+}
+
+function listenForRecipeFormClick() {
+
 }
