@@ -111,8 +111,35 @@ function getMyRecipes(url) {
 }
 
 function listenForRecipeFormClick() {
-$('#ajax-new-receipe').click(function(e){
-  e.preventDefault();
-  
-})
+  console.log('in recipe form click function')
+  let newRecipeEl = document.getElementById('new-recipe')
+  newRecipeEl.addEventListener('click', function(e){
+    e.preventDefault();
+    const formURL = this.href
+    getForm(formURL);
+  })
 }
+
+function getForm(formURL) {
+  console.log('inside getForm')
+  fetch(formURL + '.json')
+  .then(function(res) {
+    return res.json();
+  })
+}
+
+// function getMyRecipes(url) {
+//   fetch(url + '.json')
+//   .then(function(response){
+//     return response.json()
+//   })
+//   .then(function(myJson) {
+//     let myRecipes = myJson
+//     let myRecipeList = ""
+//     myRecipes.forEach((recipe) => {
+//       myRecipeList += '<li>' + '<a class="recipe-name" href="recipes/' + recipe.id + '">' + recipe.name + '</a>' + '</li>';
+//     })
+//     $('#ajax-content').html('<br>' + '<h3> My Recipes </h3>' + myRecipeList);
+//     listenRecipeNameClick();
+//   });
+// }
