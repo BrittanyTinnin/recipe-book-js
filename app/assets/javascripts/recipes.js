@@ -115,22 +115,18 @@ function listenForRecipeFormClick() {
   let newRecipeLink = document.getElementById("new-recipe")
   newRecipeLink.addEventListener('click', function(e){
     e.preventDefault();
-    const url = this.href
+    const url = this.attributes.href.textContent
     console.log(url)
-    // getForm(url);
+    getForm(url);
   })
 }
 
-// function getForm(url) {
-//   console.log('inside getForm')
-//   fetch(url + '.json')
-//   .then(function(res) {
-//     return res.json();
-//   })
-//   .then(function(myJson) {
-//     console.log(myJson)
-//   })
-// }
+function getForm(url) {
+  console.log('inside getForm')
+ $.get(url).done(resp => {
+   $('#ajax-form-recipe').html(resp);
+ })
+}
 
 // function getMyRecipes(url) {
 //   fetch(url + '.json')
