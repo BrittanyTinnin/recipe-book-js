@@ -117,15 +117,21 @@ function listenForRecipeFormClick() {
     e.preventDefault();
     const url = this.attributes.href.textContent
     console.log(url)
-    getForm(url);
+    loadForm(url);
   })
 }
 
-function getForm(url) {
+function loadForm(url) {
   console.log('inside getForm')
   let param = "?layout=false"
  $.get(url + param).done(resp => {
    $('#ajax-form-recipe').html(resp);
+   listenSubmitForm();
  })
+}
+
+function listenSubmitForm() {
+  console.log('in submit form')
+  
 }
 
