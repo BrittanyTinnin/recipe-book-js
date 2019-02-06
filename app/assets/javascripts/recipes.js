@@ -111,5 +111,8 @@ function getMyRecipes(url) {
 }
 
 function listenForRecipeFormClick() {
-
+$('#ajax-new-receipe').click(function(e){
+  e.preventDefault();
+  
+})
 }
