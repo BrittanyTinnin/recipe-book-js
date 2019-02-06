@@ -21,10 +21,11 @@ class Recipe {
 
 Recipe.prototype.buildHTML = function() {
   let html = '<h2>Recipe</h2>' + `<h3>${this.name}</h3>`
-  html += `<li>${this.description}</li>`
-  html += 
-  html += '<ul>' + `<li>${this.ingredients}</li>`
-
+  html += `<p>${this.description}</p>` + '<ul>'
+  for (i = 0; i < this.quantities.length; i++) {
+    html += `<li>${this.quantities[i].amount} of ${this.ingredients[i].name}</li>`
+  }
+  html += '</ul>'
   return html
 }
 
@@ -57,11 +58,6 @@ function getRecipes() {
 
 function listenRecipeNameClick() {
   console.log('inside recipe name click')
-  // let recipeName = document.getElementsByClassName('recipe-name');
-  // recipeName.addEventListener('click', function(e){
-  //   e.preventDefault();
-  //   showRecipe();
-  // })
   $(".recipe-name").click(function(e){
     e.preventDefault();
     const url = this.href
