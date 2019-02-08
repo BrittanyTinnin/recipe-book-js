@@ -135,7 +135,9 @@ function listenSubmitForm() {
   let submit = document.getElementById('submit-form')
   submit.addEventListener('click', function(e){
     e.preventDefault();
-    alert('clicked form submit button')
+    let values = $('#new_recipe').serialize();
+    console.log(values)
+    
   })
 }
 

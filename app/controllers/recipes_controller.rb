@@ -36,7 +36,8 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
-      redirect_to user_recipe_path(current_user.id, @recipe)
+      # redirect_to user_recipe_path(current_user.id, @recipe)
+      render json: @recipe, status: 201
     else 
       render :new
     end
