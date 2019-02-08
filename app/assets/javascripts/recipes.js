@@ -145,9 +145,13 @@ function listenSubmitForm() {
     posting.done(function(data) {
       let recipe = data;
       $("#ajax-content").html(recipe.name)
+      $("#ajax-form-recipe").remove()
     })
   })
 }
+
+
+// $(this).parents('form').remove();
 
 // {/* <script type="text/javascript" charset="utf-8">
 //   $(function () {
