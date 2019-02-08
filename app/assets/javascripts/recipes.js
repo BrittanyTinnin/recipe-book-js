@@ -24,6 +24,8 @@ class Recipe {
   }
 }
 
+
+
 Recipe.prototype.buildHTML = function() {
   let html = '<h2>Recipe</h2>' + `<h3>${this.name}</h3>`
   html += `<p>${this.description}</p>` + '<ul>'
@@ -138,16 +140,16 @@ function listenSubmitForm() {
 
     let values = $('#new_recipe').serialize();
 
-    let posting = $.post('/posts', values);
+    let posting = $.post('/recipes', values);
 
     posting.done(function(data) {
-      console.log(data)
+      let recipe = data;
+      $("#ajax-content").html(recipe.name)
     })
-    
   })
 }
 
-// // {/* <script type="text/javascript" charset="utf-8"> */}
+// {/* <script type="text/javascript" charset="utf-8">
 //   $(function () {
 //     $('form').submit(function(event) {
 //       //prevent form from submitting the default way
@@ -158,8 +160,10 @@ function listenSubmitForm() {
 //       var posting = $.post('/posts', values);
  
 //       posting.done(function(data) {
-//         // TODO: handle response
+//         var post = data;
+//         $("#postTitle").text(post["title"]);
+//         $("#postBody").text(post["description"]);
 //       });
 //     });
 //   });
-// </script>
+// </script> */}
