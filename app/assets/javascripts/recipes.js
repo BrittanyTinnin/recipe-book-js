@@ -5,7 +5,7 @@ $(document).ready(function() {
   if(document.getElementById('ajax-content') ) {
     listenAllRecipesClick();
     listenMyRecipesClick();
-    listenForRecipeFormClick();
+    listenForNewRecipeClick();
   }
 });
 
@@ -110,7 +110,7 @@ function getMyRecipes(url) {
   });
 }
 
-function listenForRecipeFormClick() {
+function listenForNewRecipeClick() {
   console.log('in recipe form click function')
   let newRecipeLink = document.getElementById("new-recipe")
   newRecipeLink.addEventListener('click', function(e){
@@ -135,9 +135,31 @@ function listenSubmitForm() {
   let submit = document.getElementById('submit-form')
   submit.addEventListener('click', function(e){
     e.preventDefault();
+
     let values = $('#new_recipe').serialize();
-    console.log(values)
+
+    let posting = $.post('/posts', values);
+
+    posting.done(function(data) {
+      console.log(data)
+    })
     
   })
 }
 
+// // {/* <script type="text/javascript" charset="utf-8"> */}
+//   $(function () {
+//     $('form').submit(function(event) {
+//       //prevent form from submitting the default way
+//       event.preventDefault();
+ 
+//       var values = $(this).serialize();
+ 
+//       var posting = $.post('/posts', values);
+ 
+//       posting.done(function(data) {
+//         // TODO: handle response
+//       });
+//     });
+//   });
+// </script>
