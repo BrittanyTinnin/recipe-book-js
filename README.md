@@ -15,8 +15,11 @@ These instructions will get you a copy of the project up and running on your loc
 #### Installation
 
   * Clone the project from Github, `https://github.com/BrittanyTinnin/recipe-book`
-  * Navigate into project directory in the terminal run `bundle install` to install the gems associated with the project
-  * Run `rails s` to start a web server and navigate to `localhost:3000` inside of the web browser
+  * Navigate into project directory in the terminal run
+      - `bundle install` 
+      - `rake db:migrate`
+  * Run `rails s` to start a web server
+  * Navigate to `localhost:3000` inside of the web browser (preferrably [Chrome](https://www.google.com/chrome/))
 
 
 ### Built With
