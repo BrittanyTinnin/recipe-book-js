@@ -18,10 +18,6 @@ class Recipe {
     this.quantities = obj.quantities
     this.ingredients = obj.ingredients
   }
-
-  static newRecipeForm() {
-
-  }
 }
 
 
