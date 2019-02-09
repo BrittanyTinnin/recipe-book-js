@@ -12,6 +12,8 @@ This application was built using Ruby On Rails 5 and a bit of bootstrap styling.
   * Navigate into project directory and rom the terminal (in project directory) run Bundle install to install the gems associated with the website
   * Run "rails s" to start a web server and navigate to localhost:3000 inside of the web browser
 
+# License
+
 MIT License
 
 Copyright (c) 2019 Brittany Tinnin
