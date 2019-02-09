@@ -139,31 +139,11 @@ function listenSubmitForm() {
     let posting = $.post('/recipes', values);
 
     posting.done(function(data) {
-      let recipe = data;
-      $("#ajax-content").html(recipe.name)
+      // let recipe = data;
+      const newRecipe = new Recipe(data)
+      $("#ajax-content").html(newRecipe.buildHTML())
       $("#ajax-form-recipe").remove()
     })
   })
 }
 
-
-// $(this).parents('form').remove();
-
-// {/* <script type="text/javascript" charset="utf-8">
-//   $(function () {
-//     $('form').submit(function(event) {
-//       //prevent form from submitting the default way
-//       event.preventDefault();
- 
-//       var values = $(this).serialize();
- 
-//       var posting = $.post('/posts', values);
- 
-//       posting.done(function(data) {
-//         var post = data;
-//         $("#postTitle").text(post["title"]);
-//         $("#postBody").text(post["description"]);
-//       });
-//     });
-//   });
-// </script> */}
