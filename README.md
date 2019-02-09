@@ -1,4 +1,4 @@
-# README
+# Recipe Book
 
 Welcome to the 4 Recipe Book Application.
 
@@ -7,13 +7,25 @@ This is a project build using Rails 5 w/Vanilla JavaScript, and bootstrap for st
 This project is where you can manage recipes with 4 ingredients. You can create, edit, delete, and share with other users all the 4 Recipes you can think to make using AJAX.
 
 
-# Installation
+### Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+
+
+#### Installation
 
   * Clone the project from Github, `https://github.com/BrittanyTinnin/recipe-book`
   * Navigate into project directory in the terminal run `bundle install` to install the gems associated with the project
   * Run `rails s` to start a web server and navigate to `localhost:3000` inside of the web browser
 
-# License
+
+### Built With
+  * [Rails 5](https://rubyonrails.org/)
+  * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+  * [Bootstrap](https://getbootstrap.com/)
+
+
+### License
 
 MIT License
 
