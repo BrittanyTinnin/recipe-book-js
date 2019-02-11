@@ -113,7 +113,7 @@ function listenForNewRecipeClick() {
 function loadForm(url) {
   let param = "?layout=false"
  $.get(url + param).done(resp => {
-   $('#ajax-form-recipe').html(resp);
+   $('#ajax-content').html(resp);
    listenSubmitForm();
  })
 }
@@ -130,7 +130,6 @@ function listenSubmitForm() {
     posting.done(function(data) {
       const newRecipe = new Recipe(data)
       $("#ajax-content").html(newRecipe.buildHTML())
-      $("#ajax-form-recipe").remove()
     })
   })
 }
