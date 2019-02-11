@@ -131,6 +131,9 @@ function listenSubmitForm() {
       const newRecipe = new Recipe(data)
       $("#ajax-content").html(newRecipe.buildHTML())
     })
+    .fail(function() {
+      alert("Fields cannot be blank!")
+    })
   })
 }
 

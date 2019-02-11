@@ -39,7 +39,8 @@ class RecipesController < ApplicationController
       # redirect_to user_recipe_path(current_user.id, @recipe)
       render json: @recipe, status: 201
     else 
-      render :new
+      # render :new
+      render json: JSON.generate({error: "Invalid form entries"}), status: 400
     end
   end
 
