@@ -1,8 +1,7 @@
 //set up a document ready in order to detect when our HTML page has loaded, and the document is ready to be manipulated:
 $(document).ready(function() {
   // list all event listener functions
-  console.log('recipe.js is loaded....');
-  if(document.getElementById('ajax-content') ) {
+  if (document.getElementById('ajax-content') ) {
     listenAllRecipesClick();
     listenMyRecipesClick();
     listenForNewRecipeClick();
@@ -33,7 +32,6 @@ Recipe.prototype.buildHTML = function() {
 
 
 function listenAllRecipesClick() {
-  console.log('in listen all recipes click function');
   let docId = document.getElementById('all-recipes');
   docId.addEventListener('click', function(event){
     event.preventDefault();
@@ -60,7 +58,6 @@ function getRecipes() {
 
 
 function listenRecipeNameClick() {
-  console.log('inside recipe name click')
   $(".recipe-name").click(function(e){
     e.preventDefault();
     const url = this.href
@@ -69,21 +66,17 @@ function listenRecipeNameClick() {
 }
 
 function showRecipe(url) {
-  console.log('in show recipe function')
   fetch(url + '.json')
   .then(function(response){
     return response.json()
   })
   .then(function(response){
     let recipe = new Recipe(response)
-    console.log('recipe created')
-    console.log(recipe)
     $("#ajax-content").html(recipe.buildHTML())
   })
 }
 
 function listenMyRecipesClick() {
-  console.log('in my recipes click function')
   let myRecipeEl = document.getElementById('my-recipes');
   myRecipeEl.addEventListener('click', function(e){
     e.preventDefault();
@@ -109,18 +102,15 @@ function getMyRecipes(url) {
 }
 
 function listenForNewRecipeClick() {
-  console.log('in recipe form click function')
   let newRecipeLink = document.getElementById("new-recipe")
   newRecipeLink.addEventListener('click', function(e){
     e.preventDefault();
     const url = this.attributes.href.textContent
-    console.log(url)
     loadForm(url);
   })
 }
 
 function loadForm(url) {
-  console.log('inside getForm')
   let param = "?layout=false"
  $.get(url + param).done(resp => {
    $('#ajax-form-recipe').html(resp);
@@ -129,7 +119,6 @@ function loadForm(url) {
 }
 
 function listenSubmitForm() {
-  console.log('in submit form')
   let submit = document.getElementById('submit-form')
   submit.addEventListener('click', function(e){
     e.preventDefault();
@@ -139,7 +128,6 @@ function listenSubmitForm() {
     let posting = $.post('/recipes', values);
 
     posting.done(function(data) {
-      // let recipe = data;
       const newRecipe = new Recipe(data)
       $("#ajax-content").html(newRecipe.buildHTML())
       $("#ajax-form-recipe").remove()
