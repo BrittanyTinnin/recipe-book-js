@@ -9,17 +9,16 @@ $(document).ready(function() {
   }
 });
 
+
 class Recipe {
   constructor(obj) {
     this.id = obj.id
     this.name = obj.name
     this.description = obj.description
-    // this.user.id = obj.user.id
     this.quantities = obj.quantities
     this.ingredients = obj.ingredients
   }
 }
-
 
 
 Recipe.prototype.buildHTML = function() {
@@ -58,6 +57,7 @@ function getRecipes() {
     listenRecipeNameClick();
   });
 };
+
 
 function listenRecipeNameClick() {
   console.log('inside recipe name click')
