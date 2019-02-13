@@ -16,13 +16,14 @@ class Recipe {
     this.description = obj.description
     this.quantities = obj.quantities
     this.ingredients = obj.ingredients
+    this.instructions = obj.instructions
   }
 }
 
 //Recipe prototype method -- recipe display
 Recipe.prototype.buildHTML = function() {
   let html = '<h3>Recipe Info</h3>' + `<h4>Name: ${this.name}</h4>`
-  html += `<p> Description: ${this.description}</p>` + '<h4>Ingredients</h4>' + '<ul>'
+  html += `<p> Description: ${this.description}</p>` + `<p>Instructions: ${this.instructions}</p>` + '<h4>Ingredients</h4>' + '<ul>'
   for (i = 0; i < this.quantities.length; i++) {
     html += `<li>${this.quantities[i].amount} of ${this.ingredients[i].name}</li>`
   }
