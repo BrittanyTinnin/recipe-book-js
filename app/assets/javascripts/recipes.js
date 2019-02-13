@@ -8,7 +8,7 @@ $(document).ready(function() {
   }
 });
 
-
+//Recipe object
 class Recipe {
   constructor(obj) {
     this.id = obj.id
@@ -19,10 +19,10 @@ class Recipe {
   }
 }
 
-
+//Recipe prototype method -- recipe display
 Recipe.prototype.buildHTML = function() {
-  let html = '<h2>Recipe</h2>' + `<h3>${this.name}</h3>`
-  html += `<p>${this.description}</p>` + '<ul>'
+  let html = '<h3>Recipe Info</h3>' + `<h4>Name: ${this.name}</h4>`
+  html += `<p> Description: ${this.description}</p>` + '<h4>Ingredients</h4>' + '<ul>'
   for (i = 0; i < this.quantities.length; i++) {
     html += `<li>${this.quantities[i].amount} of ${this.ingredients[i].name}</li>`
   }
@@ -30,7 +30,7 @@ Recipe.prototype.buildHTML = function() {
   return html
 }
 
-
+//when user clicks on 'All Recipes'
 function listenAllRecipesClick() {
   let docId = document.getElementById('all-recipes');
   docId.addEventListener('click', function(event){
@@ -39,7 +39,7 @@ function listenAllRecipesClick() {
   });
 };
 
-
+//loads all recipes after clicking 'All Recipes'
 function getRecipes() {
   fetch('/recipes.json')
   .then(function(response) {
@@ -56,7 +56,7 @@ function getRecipes() {
   });
 };
 
-
+//when user clicks recipe name
 function listenRecipeNameClick() {
   $(".recipe-name").click(function(e){
     e.preventDefault();
@@ -65,6 +65,7 @@ function listenRecipeNameClick() {
   })
 }
 
+//loads recipe after clicking it's name
 function showRecipe(url) {
   fetch(url + '.json')
   .then(function(response){
@@ -76,6 +77,7 @@ function showRecipe(url) {
   })
 }
 
+//when user clicks 'MyRecipes'
 function listenMyRecipesClick() {
   let myRecipeEl = document.getElementById('my-recipes');
   myRecipeEl.addEventListener('click', function(e){
@@ -85,6 +87,7 @@ function listenMyRecipesClick() {
   })
 }
 
+//loads 'My Recipes'
 function getMyRecipes(url) {
   fetch(url + '.json')
   .then(function(response){
@@ -101,6 +104,7 @@ function getMyRecipes(url) {
   });
 }
 
+//when user clicks 'New Recipe'
 function listenForNewRecipeClick() {
   let newRecipeLink = document.getElementById("new-recipe")
   newRecipeLink.addEventListener('click', function(e){
@@ -110,6 +114,7 @@ function listenForNewRecipeClick() {
   })
 }
 
+//loads 'New Recipe' form
 function loadForm(url) {
   let param = "?layout=false"
  $.get(url + param).done(resp => {
@@ -118,6 +123,7 @@ function loadForm(url) {
  })
 }
 
+//submits recipe form
 function listenSubmitForm() {
   let submit = document.getElementById('submit-form')
   submit.addEventListener('click', function(e){
