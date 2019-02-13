@@ -62,9 +62,9 @@ function getRecipes() {
       e.preventDefault();
       let searchResults = this.recipe_name.value
       let filtered = recipes.filter((recipe) => {
-        return recipe.name.toLowerCase().indexOf(searchResults.toLowerCase()) > 0
+        return recipe.name.toLowerCase().match(searchResults.toLowerCase())
       })
-      debugger;
+      // debugger;
       recipeList = ""
       filtered.forEach((recipe) => {
         recipeList += '<li>' + recipe.name + '</li>';
