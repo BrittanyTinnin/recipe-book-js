@@ -61,15 +61,12 @@ function getRecipes() {
     search_form.addEventListener('submit', function(e) {
       e.preventDefault();
       let searchResults = this.recipe_name.value
-      let filtered = recipes.filter((recipe) => {
-        return recipe.name.toLowerCase().match(searchResults.toLowerCase())
-      })
-      // debugger;
+      let filtered = recipes.filter((recipe) => recipe.name.toLowerCase().includes(searchResults.toLowerCase()))
       recipeList = ""
       filtered.forEach((recipe) => {
-        recipeList += '<li>' + recipe.name + '</li>';
+        recipeList += '<li>' + '<a href="#">' + recipe.name + '</a>' + '</li>';
       })
-      $('#ajax-content').html(recipeList)
+      $('#ajax-content').html('<br>' + '<h3> All Recipes </h3>' + recipeList)
     })
     listenRecipeNameClick();
   });
