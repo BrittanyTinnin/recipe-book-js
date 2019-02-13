@@ -48,13 +48,23 @@ function getRecipes() {
   })
   .then(function(myJson) {
     let recipes = myJson
-    let recipeList = `<form id="search_form>
+    let recipeList = `<form action="/" method="post" id="search_form">
     Search: <input type=text name="recipe_search">
+    <input type="submit" value="submit">
     </form>`
     recipes.forEach((recipe) => {
       recipeList += '<li>' + '<a class="recipe-name" href="recipes/' + recipe.id + '">' + recipe.name + '</a>' + '</li>';
     });
     $('#ajax-content').html('<br>' + '<h3> All Recipes </h3>' + recipeList);
+    let form = document.getElementById('search_form')
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let searchResults = this.recipe_search.value
+      let filtered = recipes.filter((recipe) => recipe.name.toLowerCase().includes(searchResults.toLowerCase()))
+      recipeList = ""
+      filtered.forEach((recipe) => recipeList += '<li>' + '<a href="#">' + recipe.name + '</a>' + '</li>')
+      $('#ajax-content').html(recipeList)
+    })
     listenRecipeNameClick();
   });
 };
