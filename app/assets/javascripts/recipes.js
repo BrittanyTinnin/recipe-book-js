@@ -5,6 +5,7 @@ $(document).ready(function() {
     listenAllRecipesClick();
     listenMyRecipesClick();
     listenForNewRecipeClick();
+    loadSearchBar();
   }
 });
 
@@ -48,11 +49,28 @@ function getRecipes() {
   })
   .then(function(myJson) {
     let recipes = myJson
-    let recipeList = ""
+    let recipeList = `<form action="/" method="post" id="search-form">
+    Search: <input type="text" name="recipe_name">
+    <input type="submit" value="submit">
+    </form>`
     recipes.forEach((recipe) => {
       recipeList += '<li>' + '<a class="recipe-name" href="recipes/' + recipe.id + '">' + recipe.name + '</a>' + '</li>';
     });
     $('#ajax-content').html('<br>' + '<h3> All Recipes </h3>' + recipeList);
+    let search_form = document.getElementById("search-form")
+    search_form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let searchResults = this.recipe_name.value
+      let filtered = recipes.filter((recipe) => {
+        return recipe.name.toLowerCase().indexOf(searchResults.toLowerCase()) > 0
+      })
+      debugger;
+      recipeList = ""
+      filtered.forEach((recipe) => {
+        recipeList += '<li>' + recipe.name + '</li>';
+      })
+      $('#ajax-content').html(recipeList)
+    })
     listenRecipeNameClick();
   });
 };
@@ -142,5 +160,9 @@ function listenSubmitForm() {
       alert("Fields cannot be blank!")
     })
   })
+}
+
+function loadSearchBar() {
+  console.log('search bar function loaded')
 }
 
