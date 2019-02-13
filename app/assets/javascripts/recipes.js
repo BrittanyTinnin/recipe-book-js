@@ -48,7 +48,9 @@ function getRecipes() {
   })
   .then(function(myJson) {
     let recipes = myJson
-    let recipeList = ""
+    let recipeList = `<form id="search_form>
+    Search: <input type=text name="recipe_search">
+    </form>`
     recipes.forEach((recipe) => {
       recipeList += '<li>' + '<a class="recipe-name" href="recipes/' + recipe.id + '">' + recipe.name + '</a>' + '</li>';
     });
